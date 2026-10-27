@@ -111,13 +111,13 @@ Change a task's status. This is the most common operation.
 **Multiple tasks:** When marking several tasks at once, update all in a single edit.
 
 **Shorthand the user might say:**
-- "mark 1.3 task 4 as done" -> Status = DONE
-- "start task 2 in sprint 1.1" -> Status = ACTIVE
+- "mark 1.3 task 4 as done" -> Status = x
+- "start task 2 in sprint 1.1" -> Status = ~
 - "block 1.4 #6" -> Status = BLOCKED
 - "1.4 #7 is mine" / "I'll do that one" -> Status = MANUAL
 - "cut task 8 from 1.3" -> Status = CUT
 - "defer 1.5 task 3" -> Status = DEFERRED
-- "sprint 1.2 is done" -> All tasks in 1.2 = DONE
+- "sprint 1.2 is done" -> All tasks in 1.2 = x
 
 ---
 
@@ -270,8 +270,8 @@ Summarize progress for a sprint.
 ```
 Sprint {X.Y} — {Title}
 Total: {n} tasks
-  DONE:     {n}
-  ACTIVE:   {n}
+  Done (x):     {n}
+  Active (~):   {n}
   BLOCKED:  {n}
   MANUAL:   {n}
   DEFERRED: {n}
@@ -385,8 +385,8 @@ The user may use informal language. Map these to operations:
 
 | User says | Operation |
 |-----------|-----------|
-| "mark X done" / "complete X" / "finish X" | Set Status -> DONE |
-| "start X" / "working on X" / "begin X" | Set Status -> ACTIVE |
+| "mark X done" / "complete X" / "finish X" | Set Status -> x |
+| "start X" / "working on X" / "begin X" | Set Status -> ~ |
 | "block X" / "X is blocked" | Set Status -> BLOCKED |
 | "X is mine" / "I'll do X" / "X is manual" | Set Status -> MANUAL |
 | "cut X" / "X is out of scope" | Set Status -> CUT |
@@ -398,7 +398,7 @@ The user may use informal language. Map these to operations:
 | "move task X to Y" | Move Task |
 | "how's sprint X" / "sprint X status" | Sprint Report |
 | "how's phase X" / "phase X progress" | Phase Report |
-| "what's active" / "what am I working on" | List where Status = ACTIVE |
+| "what's active" / "what am I working on" | List where Status = ~ |
 | "what's blocked" | List where Status = BLOCKED |
 | "what's on me" / "what do I need to do" | List where Status = MANUAL |
 | "what's left in X" | List where Status = — in sprint X |

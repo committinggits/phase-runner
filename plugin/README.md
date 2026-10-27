@@ -21,7 +21,7 @@ Phase Runner takes a product from a rough idea to shipped code. It plans the wor
 - `phase-wave-test` checks UI work in a browser against your design system.
 - `phase-doc-sync` is the only agent that writes status back to the phase file, so the plan always matches what actually passed.
 
-A failed wave retries with the failure attached, up to three times, then escalates to you. Say *"open the viewer"* and `phase-viewer` starts a local dashboard that shows the run live.
+A failed wave retries with the failure attached. After three failed attempts it escalates to you. Say *"open the viewer"* and `phase-viewer` starts a local dashboard that shows the run live.
 
 ## What it reads, writes, runs and fetches
 

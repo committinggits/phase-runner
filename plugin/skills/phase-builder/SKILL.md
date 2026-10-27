@@ -865,7 +865,8 @@ Migrations merged from a worktree are already applied to the shared local databa
 | Orchestrator tempted to run browser/QA tools directly | Don't — spawn wave-test instead |
 | Sub-agent times out or errors | Report it, offer to retry or skip; if part of a parallel wave, collect sibling outcomes then decide whether to retry failed sprint(s) alone or shrink the wave |
 | Git merge conflicts after parallel wave | Sign overlap was underestimated — resolve manually or re-run affected sprints sequentially with clearer ownership |
-| All sprints in phase already complete | Report "Phase {N} is fully complete — nothing to run", plus the manual list if any `MANUAL` tasks are left || User says "stop" at any point | Stop immediately, report where you left off |
+| All sprints in phase already complete | Report "Phase {N} is fully complete — nothing to run", plus the manual list if any `MANUAL` tasks are left |
+| User says "stop" at any point | Stop immediately, report where you left off |
 | Sub-agent blocked on "no tool available" | Surface install path: connector discovery, CLI install, or your environment's integration settings |
 | Tool connected mid-run | Re-inject updated tool inventory into next sub-agent prompt |
 | User requests a specific skill mid-run | Add to skill-router plan per skill-router.md override rules |
