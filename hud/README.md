@@ -63,7 +63,7 @@ claude plugin validate hud    # the manifest and the hooks module, as the engine
 claude plugin test hud        # the tests in hud/test/
 ```
 
-Run both from the repo root.
+Run both from the repo root. CI runs `node hud/scripts/sync-core.mjs --check` on every push, so a change to `viewer/src/core/` fails until the copy is refreshed.
 
 The mod reads phase files and run logs with the same parser and derive code as [phase-viewer](../viewer/). A mod can only import files from its own folder, so those modules are copied from `viewer/src/core/` into `hud/hooks/core/`. Don't edit the copies. After a change to the source, copy them again:
 

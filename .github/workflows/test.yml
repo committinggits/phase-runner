@@ -1,0 +1,41 @@
+# Runs on every push and pull request. The publish workflow only runs the
+# viewer's checks when a version bump lands on main, so without this nothing
+# tests a change before it merges.
+name: Test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  viewer:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: viewer
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: viewer/package-lock.json
+      - run: npm ci
+      # Typecheck (root and client) and the vitest suite.
+      - run: npm run check
+
+  hud-core-sync:
+    # hud/hooks/core/ is a copy of viewer/src/core/ made by sync-core.mjs.
+    # Fail when a core change lands without the copy being refreshed.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - run: node hud/scripts/sync-core.mjs --check
